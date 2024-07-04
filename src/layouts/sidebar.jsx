@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Package2 } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Layout = () => {
   return (
@@ -37,7 +38,7 @@ const Sidebar = () => (
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
           <Package2 className="h-6 w-6" />
-          <span>Acme Inc</span>
+          <span>TechTalk</span>
         </NavLink>
       </div>
       <div className="flex-1">
@@ -49,6 +50,18 @@ const Sidebar = () => (
             </SidebarNavLink>
           ))}
         </nav>
+      </div>
+      <div className="border-t p-4">
+        <div className="flex items-center gap-2">
+          <Avatar className="w-10 h-10">
+            <AvatarImage src="/placeholder.svg" alt="User Avatar" />
+            <AvatarFallback>U</AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col">
+            <span>Username</span>
+            <UserDropdown />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -69,7 +82,7 @@ const MobileSidebar = () => (
           className="flex items-center gap-2 text-lg font-semibold mb-4"
         >
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
+          <span>TechTalk</span>
         </NavLink>
         {navItems.map((item) => (
           <SidebarNavLink key={item.to} to={item.to}>
